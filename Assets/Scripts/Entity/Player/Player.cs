@@ -6,11 +6,13 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private EntityStats _playerStats;
 
+    [SerializeField] private Transform _attackPoint;
+
     private PlayerController _playerController;
 
     private void Awake()
     {
-        _playerController = new PlayerController(GetComponent<Rigidbody2D>(), _playerStats);
+        _playerController = new PlayerController(GetComponent<Rigidbody2D>(), GetComponent<Animator>(), GetComponent<SpriteRenderer>(), _playerStats, _attackPoint);
     }
 
     private void FixedUpdate()
@@ -20,6 +22,17 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        _playerController.HandleMovementActions();
+        _playerController.HandleActions();
     }
+
+    #region Utility
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+
+        Gizmos.DrawWireSphere(_attackPoint.position, _playerStats.MeleeAttackRadius);
+    }
+
+    #endregion
 }
