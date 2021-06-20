@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
         _animator = GetComponent<Animator>();
 
-        _playerController = new PlayerController(_rb2d, _animator, GetComponent<SpriteRenderer>(), PlayerStats, gameObject.transform, _attackPoint);
+        _playerController = new PlayerController(_rb2d, _animator, PlayerStats, gameObject.transform, _attackPoint);
     }
 
     private void FixedUpdate()

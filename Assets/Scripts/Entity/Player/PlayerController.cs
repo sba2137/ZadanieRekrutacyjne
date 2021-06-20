@@ -8,8 +8,6 @@ public class PlayerController
 
     private Animator _animator;
 
-    private SpriteRenderer _spriteRenderer;
-
     private EntityStats _playerStats;
 
     private Transform _attackPoint;
@@ -22,14 +20,13 @@ public class PlayerController
 
     private float _attackCooldown;
 
-    public PlayerController(Rigidbody2D rb2d, Animator animator, SpriteRenderer spriteRenderer, EntityStats playerStats, Transform playerTransform, Transform attackPoint)
+    public PlayerController(Rigidbody2D rb2d, Animator animator, EntityStats playerStats, Transform playerTransform, Transform attackPoint)
     {
         _rb2d = rb2d;
         _animator = animator;
         _playerStats = playerStats;
         _attackPoint = attackPoint;
         _playerTransform = playerTransform;
-        _spriteRenderer = spriteRenderer;
     }
 
     #region Main
