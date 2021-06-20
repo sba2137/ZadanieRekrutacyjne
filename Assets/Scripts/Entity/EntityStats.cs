@@ -6,5 +6,7 @@ public struct EntityStats
     public float MovementSpeed;
     public float JumpForce;
 
+    public int MeleeAttackDamage;
     public float MeleeAttackRadius;
+    public float AttackSpeed;
 }

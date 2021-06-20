@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        _playerController = new PlayerController(GetComponent<Rigidbody2D>(), GetComponent<Animator>(), GetComponent<SpriteRenderer>(), _playerStats, _attackPoint);
+        _playerController = new PlayerController(GetComponent<Rigidbody2D>(), GetComponent<Animator>(), GetComponent<SpriteRenderer>(), _playerStats, gameObject.transform, _attackPoint);
     }
 
     private void FixedUpdate()
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        _playerController.HandleActions();
+        _playerController.HandleController();
     }
 
     #region Utility

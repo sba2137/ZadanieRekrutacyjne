@@ -12,14 +12,19 @@ public class PlayerController
 
     private Transform _attackPoint;
 
+    private Transform _playerTransform;
+
     private float _horizontalInput;
 
-    public PlayerController(Rigidbody2D rb2d, Animator animator, SpriteRenderer spriteRenderer, EntityStats playerStats, Transform attackPoint)
+    private float _attackCooldown;
+
+    public PlayerController(Rigidbody2D rb2d, Animator animator, SpriteRenderer spriteRenderer, EntityStats playerStats, Transform playerTransform, Transform attackPoint)
     {
         _rb2d = rb2d;
         _animator = animator;
         _playerStats = playerStats;
         _attackPoint = attackPoint;
+        _playerTransform = playerTransform;
         _spriteRenderer = spriteRenderer;
     }
 
@@ -31,19 +36,36 @@ public class PlayerController
 
         _rb2d.transform.Translate(new Vector2(_horizontalInput * _playerStats.MovementSpeed * Time.fixedDeltaTime, 0));
 
-        _animator.SetFloat("HorizontalInput", Mathf.Abs(_horizontalInput));
-
         HandleRotation();
     }
 
-    public void HandleActions()
+    public void HandleController()
     {
         if (Input.GetKeyDown(KeyCode.Space) && CheckIfIsGrounded())
             Jump();
         if (Input.GetKeyUp(KeyCode.Space))
             CancelJump();
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && _attackCooldown <= 0)
             Attack();
+
+        HandleAnimations();
+
+        HandleAttackCooldown();
+    }
+
+    private void HandleAnimations()
+    {
+        if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Attack"))
+        {
+            if (_horizontalInput != 0 && _rb2d.velocity.y == 0)
+                _animator.Play("Player_Run");
+            if (_rb2d.velocity.y > 0.25f)
+                _animator.Play("Player_Jump");
+            if (_rb2d.velocity.y < 0)
+                _animator.Play("Player_Fall");
+            if (_horizontalInput == 0 && _rb2d.velocity.y == 0)
+                _animator.Play("Player_Idle");
+        }
     }
 
     #endregion
@@ -66,9 +88,16 @@ public class PlayerController
 
     private void Attack()
     {
+        _animator.Play("Player_Attack");
+
+        _attackCooldown = _playerStats.AttackSpeed;
+
         Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(_attackPoint.position, _playerStats.MeleeAttackRadius, LayerMask.GetMask("Enemies"));
 
-        //TODO
+        foreach (var enemy in enemiesInRange)
+        {
+            enemy.GetComponent<Enemy>().TakeDamage(_playerStats.MeleeAttackDamage);
+        }
     }
 
     #endregion
@@ -86,12 +115,15 @@ public class PlayerController
     private void HandleRotation()
     {
         if (_horizontalInput > 0)
-            _spriteRenderer.flipX = false;
+            _playerTransform.localScale = new Vector3(1, 1, 1);
         else if (_horizontalInput < 0)
-        {
-            _spriteRenderer.flipX = true;
-        }
+            _playerTransform.localScale = new Vector3(-1, 1, 1);
+    }
 
+    private void HandleAttackCooldown()
+    {
+        if (_attackCooldown > 0)
+            _attackCooldown -= Time.deltaTime;
     }
     #endregion
 }
