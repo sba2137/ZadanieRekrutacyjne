@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: 72ee004ff332bcc449f35d04b149b5c1
+guid: b8644fa391e7fbd44b39f4ed165dd439
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5094933682615765287
-    second: coin_anim_strip_6_0
+      213: -6722179839046455889
+    second: herochar_death_anim_strip_8_0
   - first:
-      213: 6101928269482547967
-    second: coin_anim_strip_6_1
+      213: 280192431018165955
+    second: herochar_death_anim_strip_8_1
   - first:
-      213: -8289930951752328157
-    second: coin_anim_strip_6_2
+      213: 4567056437294844318
+    second: herochar_death_anim_strip_8_2
   - first:
-      213: -3285289925518966143
-    second: coin_anim_strip_6_3
+      213: 2677000151499843161
+    second: herochar_death_anim_strip_8_3
   - first:
-      213: -4269440570820690029
-    second: coin_anim_strip_6_4
+      213: -4890499686423825532
+    second: herochar_death_anim_strip_8_4
   - first:
-      213: -4644181033338182443
-    second: coin_anim_strip_6_5
+      213: -4666324699052698954
+    second: herochar_death_anim_strip_8_5
+  - first:
+      213: -3658152448303529410
+    second: herochar_death_anim_strip_8_6
+  - first:
+      213: -1122082701881451765
+    second: herochar_death_anim_strip_8_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -83,7 +89,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 64
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -95,7 +101,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 64
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -107,7 +113,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 64
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -119,7 +125,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
-    maxTextureSize: 64
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -133,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: coin_anim_strip_6_0
+      name: herochar_death_anim_strip_8_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 8
-        height: 8
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,41 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7294c72b037d4b640800000000000000
-      internalID: 5094933682615765287
+      spriteID: fade7515d0506b2a0800000000000000
+      internalID: -6722179839046455889
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: coin_anim_strip_6_1
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ffadb638e676ea450800000000000000
-      internalID: 6101928269482547967
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: coin_anim_strip_6_2
+      name: herochar_death_anim_strip_8_1
       rect:
         serializedVersion: 2
         x: 16
         y: 0
-        width: 8
-        height: 8
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,41 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32c5948a8bf34fc80800000000000000
-      internalID: -8289930951752328157
+      spriteID: 3c6479f088173e300800000000000000
+      internalID: 280192431018165955
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: coin_anim_strip_6_3
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 182c54d083e4862d0800000000000000
-      internalID: -3285289925518966143
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: coin_anim_strip_6_4
+      name: herochar_death_anim_strip_8_2
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 8
-        height: 8
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39f779adb66efb4c0800000000000000
-      internalID: -4269440570820690029
+      spriteID: e99ce16e1a1716f30800000000000000
+      internalID: 4567056437294844318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: coin_anim_strip_6_5
+      name: herochar_death_anim_strip_8_3
       rect:
         serializedVersion: 2
-        x: 40
+        x: 48
         y: 0
-        width: 8
-        height: 8
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,8 +216,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d46543c4fd8c8fb0800000000000000
-      internalID: -4644181033338182443
+      spriteID: 956a0d5547d962520800000000000000
+      internalID: 2677000151499843161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: herochar_death_anim_strip_8_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4837c883274712cb0800000000000000
+      internalID: -4890499686423825532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: herochar_death_anim_strip_8_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b21552d862ed3fb0800000000000000
+      internalID: -4666324699052698954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: herochar_death_anim_strip_8_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3284a0eab1ab3dc0800000000000000
+      internalID: -3658152448303529410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: herochar_death_anim_strip_8_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0bdeb94abf8d60f0800000000000000
+      internalID: -1122082701881451765
       vertices: []
       indices: 
       edges: []

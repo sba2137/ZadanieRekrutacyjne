@@ -4,48 +4,75 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private EntityStats _playerStats;
+    public int GoldAmount { get; private set; }
+
+    public EntityStats PlayerStats;
 
     [SerializeField] private Transform _attackPoint;
 
     private Rigidbody2D _rb2d;
 
+    private Animator _animator;
+
     private PlayerController _playerController;
+
+    private bool _isAlive = true;
 
     private void Awake()
     {
         _rb2d = GetComponent<Rigidbody2D>();
 
-        _playerController = new PlayerController(_rb2d, GetComponent<Animator>(), GetComponent<SpriteRenderer>(), _playerStats, gameObject.transform, _attackPoint);
+        _animator = GetComponent<Animator>();
+
+        _playerController = new PlayerController(_rb2d, _animator, GetComponent<SpriteRenderer>(), PlayerStats, gameObject.transform, _attackPoint);
     }
 
     private void FixedUpdate()
     {
-        _playerController.HandleMovement();
+        if (_isAlive)
+            _playerController.HandleMovement();
     }
 
     private void Update()
     {
-        _playerController.HandleController();
+        if (_isAlive)
+            _playerController.HandleController();
     }
 
     #region Main
 
+    public void AddGold(int goldAmount)
+    {
+        GoldAmount += goldAmount;
+
+        GameManager.Instance.UiManager.UpdateGoldUi(GoldAmount);
+    }
+
     public void TakeDamage(int damageValue, Vector2 knockbackDirection)
     {
-        Debug.LogWarning(_playerStats.HealthPoints);
+        PlayerStats.HealthPoints -= damageValue;
 
-        _playerStats.HealthPoints -= damageValue;
+        GameManager.Instance.UiManager.DestroyUiHeart();
 
         StartCoroutine(HandleKnockback(knockbackDirection));
 
-        if (_playerStats.HealthPoints <= 0)
+        if (PlayerStats.HealthPoints <= 0)
             HandleDeath();
     }
 
     private void HandleDeath()
     {
+        _isAlive = false;
 
+        _rb2d.simulated = false;
+
+        GetComponent<Collider2D>().isTrigger = true;
+
+        _animator.Play("Player_Death");
+
+        Destroy(gameObject, _animator.GetCurrentAnimatorStateInfo(0).length);
+
+        GameManager.Instance.UiManager.ShowDeathScreen();
     }
 
     private IEnumerator HandleKnockback(Vector2 knockbackDirection)
@@ -71,7 +98,7 @@ public class Player : MonoBehaviour
     {
         Gizmos.color = Color.blue;
 
-        Gizmos.DrawWireSphere(_attackPoint.position, _playerStats.MeleeAttackRadius);
+        Gizmos.DrawWireSphere(_attackPoint.position, PlayerStats.MeleeAttackRadius);
     }
 
     #endregion
