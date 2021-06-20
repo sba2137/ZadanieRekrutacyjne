@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerController
 {
+    public bool BlockMovement;
+
     private Rigidbody2D _rb2d;
 
     private Animator _animator;
@@ -13,6 +15,8 @@ public class PlayerController
     private Transform _attackPoint;
 
     private Transform _playerTransform;
+
+    private Vector2 _facingDirection;
 
     private float _horizontalInput;
 
@@ -32,11 +36,14 @@ public class PlayerController
 
     public void HandleMovement()
     {
-        _horizontalInput = Input.GetAxisRaw("Horizontal");
+        if(BlockMovement == false)
+        {
+            _horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        _rb2d.transform.Translate(new Vector2(_horizontalInput * _playerStats.MovementSpeed * Time.fixedDeltaTime, 0));
+            _rb2d.transform.Translate(new Vector2(_horizontalInput * _playerStats.MovementSpeed * Time.fixedDeltaTime, 0));
 
-        HandleRotation();
+            HandleRotation();
+        }
     }
 
     public void HandleController()
@@ -96,7 +103,7 @@ public class PlayerController
 
         foreach (var enemy in enemiesInRange)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(_playerStats.MeleeAttackDamage);
+            enemy.GetComponent<Enemy>().TakeDamage(_playerStats.MeleeAttackDamage, _facingDirection);
         }
     }
 
@@ -115,9 +122,15 @@ public class PlayerController
     private void HandleRotation()
     {
         if (_horizontalInput > 0)
+        {
             _playerTransform.localScale = new Vector3(1, 1, 1);
+            _facingDirection = Vector2.right;
+        }
         else if (_horizontalInput < 0)
+        {
             _playerTransform.localScale = new Vector3(-1, 1, 1);
+            _facingDirection = Vector2.left;
+        }
     }
 
     private void HandleAttackCooldown()
